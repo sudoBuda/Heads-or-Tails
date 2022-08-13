@@ -11,8 +11,8 @@
   <br />
   <input ref="gamblingCoins" type="number" value="10" min="10" :max="coins" />
   <select ref="coinElection">
-    <option value="cara">cara</option>
-    <option value="sello">sello</option>
+    <option value="cara">Cara</option>
+    <option value="cruz">Cruz</option>
   </select>
   <button @click="coinFlip">Girar moneda</button>
   <br />
@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       winner: "Bienvenido, dale al boton",
-      coins: 5000,
+      coins: 100,
       juegos: 0,
       ganados: 0,
       perdidos: 0,
@@ -70,11 +70,11 @@ export default {
           this.winner = "Girando...";
 
           setTimeout(function () {
-            self.winner = "Gana sello";
+            self.winner = "Gana Cruz";
             self.$refs.logoChange.src = require("./assets/tail_coin.png");
           }, 3100);
 
-          if (this.$refs.coinElection.value == "sello") {
+          if (this.$refs.coinElection.value == "cruz") {
             this.coins = parseInt(
               Number(this.coins) + Number(this.$refs.gamblingCoins.value)
             );
@@ -104,8 +104,8 @@ export default {
 
         setTimeout(function () {
           alert("no te queda dinero");
-          alert("Te daremos 5000 mas porque nos caes bien (;");
-          self.coins = 5000;
+          alert("Te daremos 100 mas porque nos caes bien (;");
+          self.coins = 100;
         }, 1000);
       }
     },
